@@ -6,8 +6,7 @@ public class HoopCatch : MonoBehaviour
     {
         if (!other.CompareTag("Toy")) return;
 
-        // Optional: play sound / particles here
-
+        ScoreManager.Instance.AddScore(1);
         Destroy(other.gameObject);
     }
 }
