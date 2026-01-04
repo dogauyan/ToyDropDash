@@ -7,12 +7,17 @@ public class ScoreManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI missesText;
+    public GameObject gameOverPanel;
+
+    [Header("Game Rules")]
+    public int maxMisses = 3;
 
     int score = 0;
+    int misses = 0;
 
     void Awake()
     {
-        // Simple singleton
         if (Instance == null)
             Instance = this;
         else
@@ -22,6 +27,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         UpdateUI();
+        gameOverPanel.SetActive(false);
     }
 
     public void AddScore(int amount)
@@ -30,8 +36,24 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void AddMiss()
+    {
+        misses++;
+        UpdateUI();
+
+        if (misses >= maxMisses)
+            GameOver();
+    }
+
     void UpdateUI()
     {
         scoreText.text = "Score: " + score;
+        missesText.text = "Misses: " + misses + " / " + maxMisses;
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
     }
 }
