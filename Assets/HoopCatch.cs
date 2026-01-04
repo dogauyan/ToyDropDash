@@ -4,9 +4,9 @@ public class HoopCatch : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Toy")) return;
+        Toy toy = other.GetComponent<Toy>();
+        if (toy == null) return;
 
-        ScoreManager.Instance.AddScore(1);
-        Destroy(other.gameObject);
+        toy.OnCaught();
     }
 }

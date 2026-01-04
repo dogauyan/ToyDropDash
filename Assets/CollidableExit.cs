@@ -4,10 +4,12 @@ public class CollidableExit : MonoBehaviour
 {
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Toy")) return;
+        Toy toy = collision.GetComponent<Toy>();
+        if (toy == null) return;
 
-        // Check if toy exited at the bottom
-        if (collision.transform.position.y < transform.position.y)
+        // Only count as miss if this toy allows it
+        if (toy.causesMissOnExit &&
+            collision.transform.position.y < transform.position.y)
         {
             ScoreManager.Instance.AddMiss();
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2652023708000876916}
   - component: {fileID: 1187421958471990948}
   m_Layer: 0
-  m_Name: Toy
+  m_Name: Toy_Bonus
   m_TagString: Toy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.14144802, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672bc313026dc049ab2acf99345c15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toy
-  scoreValue: 1
+  scoreValue: 5
   causesMissOnCatch: 0

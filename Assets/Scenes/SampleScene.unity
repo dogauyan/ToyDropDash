@@ -368,7 +368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104, y: -26.3}
+  m_AnchoredPosition: {x: 104, y: -26.300003}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &437562870
@@ -597,7 +597,13 @@ MonoBehaviour:
   CollidableArea: {fileID: 1706231745}
   InitialSpawnTick: 3
   TickSpeedMultiplier: 0.9
-  ToyPrefab: {fileID: 5098497790150785071, guid: b8e02c9cf66dfcb458d490399c688b77, type: 3}
+  ToyPrefabs:
+  - prefab: {fileID: 5098497790150785071, guid: b8e02c9cf66dfcb458d490399c688b77, type: 3}
+    weight: 70
+  - prefab: {fileID: 5098497790150785071, guid: 76367a1d7caee594785ac0bf397bcb9e, type: 3}
+    weight: 15
+  - prefab: {fileID: 5098497790150785071, guid: e82dd9891884fed409350b623ee74ffc, type: 3}
+    weight: 15
 --- !u!4 &1185718588
 Transform:
   m_ObjectHideFlags: 0
@@ -1152,7 +1158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -25.410004}
+  m_AnchoredPosition: {x: -84.79999, y: -22.099976}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1995181652
