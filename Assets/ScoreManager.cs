@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,13 +10,22 @@ public class ScoreManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI missesText;
+    public TextMeshProUGUI comboText;
     public GameObject gameOverPanel;
+    [Header("Pause")]
+    public GameObject pausePanel;
+
+    bool isPaused = false;
+    bool isGameOver = false;
+
 
     [Header("Game Rules")]
     public int maxMisses = 3;
 
     int score = 0;
     int misses = 0;
+    int combo = 0;
+    int bestCombo = 0;
 
     void Awake()
     {
@@ -30,30 +41,88 @@ public class ScoreManager : MonoBehaviour
         gameOverPanel.SetActive(false);
     }
 
-    public void AddScore(int amount)
+    // NORMAL / BONUS catch
+    public void AddScore(int basePoints)
     {
-        score += amount;
+        combo++;
+        bestCombo = Mathf.Max(bestCombo, combo);
+
+        score += basePoints * Mathf.Max(1, combo);
         UpdateUI();
     }
 
+    // NORMAL / BONUS miss
     public void AddMiss()
     {
         misses++;
+        BreakCombo();
         UpdateUI();
 
         if (misses >= maxMisses)
             GameOver();
     }
 
+    // TRAP catch
+    public void BreakCombo()
+    {
+        combo = 0;
+        UpdateUI();
+    }
+    public void ApplyTrapPenalty(int penalty)
+    {
+        BreakCombo();
+        score = Mathf.Max(0, score - penalty);
+        UpdateUI();
+    }
+
     void UpdateUI()
     {
-        scoreText.text = "Score: " + score;
-        missesText.text = "Misses: " + misses + " / " + maxMisses;
+        scoreText.text = $"Score: {score}";
+        missesText.text = $"Misses: {misses} / {maxMisses}";
+        comboText.text = combo > 1 ? $"Combo x{combo}" : "";
     }
 
     void GameOver()
     {
+        isGameOver = true;
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    void Update()
+    {
+        if (isGameOver) return;
+
+        if (Keyboard.current == null) return;
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (isPaused)
+                ResumeGame();
+            else
+                PauseGame();
+        }
+    }
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        pausePanel.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        pausePanel.SetActive(false);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
+

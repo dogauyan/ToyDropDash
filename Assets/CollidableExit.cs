@@ -7,7 +7,7 @@ public class CollidableExit : MonoBehaviour
         Toy toy = collision.GetComponent<Toy>();
         if (toy == null) return;
 
-        // Only count as miss if this toy allows it
+        // Only count miss if this toy allows it
         if (toy.causesMissOnExit &&
             collision.transform.position.y < transform.position.y)
         {
