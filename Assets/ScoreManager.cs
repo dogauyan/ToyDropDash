@@ -14,6 +14,11 @@ public class ScoreManager : MonoBehaviour
     public GameObject gameOverPanel;
     [Header("Pause")]
     public GameObject pausePanel;
+    [Header("High Score")]
+    public TextMeshProUGUI highScoreText;
+
+    int highScore = 0;
+
 
     bool isPaused = false;
     bool isGameOver = false;
@@ -39,6 +44,11 @@ public class ScoreManager : MonoBehaviour
     {
         UpdateUI();
         gameOverPanel.SetActive(false);
+        {
+            highScore = PlayerPrefs.GetInt("HighScore", 0);
+            UpdateUI();
+            gameOverPanel.SetActive(false);
+        }
     }
 
     // NORMAL / BONUS catch
@@ -80,13 +90,25 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = $"Score: {score}";
         missesText.text = $"Misses: {misses} / {maxMisses}";
         comboText.text = combo > 1 ? $"Combo x{combo}" : "";
+
+        if (highScoreText != null)
+            highScoreText.text = $"High Score: {highScore}";
     }
 
     void GameOver()
     {
         isGameOver = true;
+
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
+        UpdateUI();
     }
     public void RestartGame()
     {
@@ -123,6 +145,12 @@ public class ScoreManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
 }
 
