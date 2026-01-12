@@ -99,6 +99,8 @@ public class ScoreManager : MonoBehaviour
     {
         isGameOver = true;
 
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gameOver);
+
         if (score > highScore)
         {
             highScore = score;

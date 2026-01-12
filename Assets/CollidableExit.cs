@@ -9,9 +9,10 @@ public class CollidableExit : MonoBehaviour
 
         // Only count miss if this toy allows it
         if (toy.causesMissOnExit &&
-            collision.transform.position.y < transform.position.y)
+      collision.transform.position.y < transform.position.y)
         {
             ScoreManager.Instance.AddMiss();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.miss);
         }
 
         Destroy(collision.gameObject);

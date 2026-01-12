@@ -12,12 +12,13 @@ public class Toy : MonoBehaviour
     {
         if (causesMissOnCatch)
         {
-            // Trap caught → counts as a miss and breaks combo
             ScoreManager.Instance.AddMiss();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.catchTrap);
         }
         else
         {
             ScoreManager.Instance.AddScore(scoreValue);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.catchNormal);
         }
 
         Destroy(gameObject);
