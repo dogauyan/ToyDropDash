@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -12,17 +12,12 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI missesText;
     public TextMeshProUGUI comboText;
     public GameObject gameOverPanel;
+
     [Header("Pause")]
     public GameObject pausePanel;
+
     [Header("High Score")]
     public TextMeshProUGUI highScoreText;
-
-    int highScore = 0;
-
-
-    bool isPaused = false;
-    bool isGameOver = false;
-
 
     [Header("Game Rules")]
     public int maxMisses = 3;
@@ -31,6 +26,10 @@ public class ScoreManager : MonoBehaviour
     int misses = 0;
     int combo = 0;
     int bestCombo = 0;
+    int highScore = 0;
+
+    bool isPaused = false;
+    bool isGameOver = false;
 
     void Awake()
     {
@@ -42,23 +41,25 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         UpdateUI();
+
         gameOverPanel.SetActive(false);
-        {
-            highScore = PlayerPrefs.GetInt("HighScore", 0);
-            UpdateUI();
-            gameOverPanel.SetActive(false);
-        }
+        pausePanel.SetActive(false);
     }
 
     // NORMAL / BONUS catch
-    public void AddScore(int basePoints)
+    // 🔥 NOW RETURNS FINAL AWARDED SCORE
+    public int AddScore(int basePoints)
     {
         combo++;
         bestCombo = Mathf.Max(bestCombo, combo);
 
-        score += basePoints * Mathf.Max(1, combo);
+        int finalPoints = basePoints * Mathf.Max(1, combo);
+        score += finalPoints;
+
         UpdateUI();
+        return finalPoints;
     }
 
     // NORMAL / BONUS miss
@@ -78,6 +79,7 @@ public class ScoreManager : MonoBehaviour
         combo = 0;
         UpdateUI();
     }
+
     public void ApplyTrapPenalty(int penalty)
     {
         BreakCombo();
@@ -112,15 +114,16 @@ public class ScoreManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         UpdateUI();
     }
+
     public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     void Update()
     {
         if (isGameOver) return;
-
         if (Keyboard.current == null) return;
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -131,28 +134,29 @@ public class ScoreManager : MonoBehaviour
                 PauseGame();
         }
     }
+
     public void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0f;
         pausePanel.SetActive(true);
     }
+
     public void ResumeGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
         pausePanel.SetActive(false);
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
-
-
 }
-

@@ -8,5 +8,6 @@ public class HoopCatch : MonoBehaviour
         if (toy == null) return;
 
         toy.OnCaught();
+        GetComponent<HoopFeedback>()?.PlayCatchFeedback();
     }
 }

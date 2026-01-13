@@ -393,6 +393,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &57827948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57827950}
+  - component: {fileID: 57827949}
+  m_Layer: 0
+  m_Name: FloatingTextSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &57827949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57827948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a111cb704924d24189e4110f6cb38cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingTextSpawner
+  floatingTextPrefab: {fileID: 8814586014047051824, guid: b41a8118f52160f42bd51a0366e2611d, type: 3}
+--- !u!4 &57827950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57827948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08011, y: 0.4096, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &63326113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,6 +1313,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1349,6 +1395,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485f27a37b4b37f47a747908534f760d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
 --- !u!1 &523260000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,6 +2718,7 @@ GameObject:
   - component: {fileID: 1271523177}
   - component: {fileID: 1271523176}
   - component: {fileID: 1271523179}
+  - component: {fileID: 1271523180}
   m_Layer: 0
   m_Name: Hoop
   m_TagString: Untagged
@@ -2827,6 +2886,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0570c7acf6f6e24286eee6cf188576b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoopCatch
+--- !u!114 &1271523180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271523173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0af38e1f0e97e44a10324ece2c900b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoopFeedback
 --- !u!1 &1342418799
 GameObject:
   m_ObjectHideFlags: 0
@@ -5414,3 +5485,4 @@ SceneRoots:
   - {fileID: 1271523175}
   - {fileID: 2102487505}
   - {fileID: 1120864628}
+  - {fileID: 57827950}
