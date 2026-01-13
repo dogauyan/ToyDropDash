@@ -5,13 +5,14 @@ public class FloatingTextSpawner : MonoBehaviour
     public static FloatingTextSpawner Instance;
 
     public FloatingText floatingTextPrefab;
+    public Transform floatingTextParent;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public static void Show(string text, Vector3 position)
+    public static void Show(string text, Vector3 position, Color? _color = null)
     {
         if (Instance == null) return;
 
@@ -20,16 +21,24 @@ public class FloatingTextSpawner : MonoBehaviour
             position,
             Quaternion.identity
         );
+        //ft.transform.SetParent(Instance.floatingTextParent, true);
 
         // Default styling
         Color color = Color.white;
 
-        if (text.Contains("TRAP"))
-            color = Color.red;
-        else if (text.Contains("MISS"))
-            color = Color.gray;
+        if (_color != null)
+        {
+            color = _color.Value;
+        }
         else
-            color = Color.yellow;
+        {
+            if (text.Contains("TRAP"))
+                color = Color.red;
+            else if (text.Contains("MISS"))
+                color = Color.gray;
+            else
+                color = Color.yellow;
+        }
 
         ft.SetText(text, color);
     }

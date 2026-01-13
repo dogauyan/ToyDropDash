@@ -65,6 +65,8 @@ public class ScoreManager : MonoBehaviour
     // NORMAL / BONUS miss
     public void AddMiss()
     {
+        FloatingTextSpawner.Show("1", new Vector3(.9f, -3.5f, 0) + missesText.transform.position, Color.red);
+
         misses++;
         BreakCombo();
         UpdateUI();
