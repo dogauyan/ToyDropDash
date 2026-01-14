@@ -2526,18 +2526,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b19a363016daba409f544c0afa1bb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  sfxSource: {fileID: 0}
-  musicSource: {fileID: 0}
-  catchNormal: {fileID: 0}
-  catchBonus: {fileID: 0}
-  catchTrap: {fileID: 0}
-  miss: {fileID: 0}
+  sfxSource: {fileID: 1120864626}
+  musicSource: {fileID: 1120864626}
+  catchNormal: {fileID: 8300000, guid: a9bef8b6645284f4d8aa19ab4c9131b4, type: 3}
+  catchBonus: {fileID: 8300000, guid: 43e2d36b91de08143b41000f30672b9f, type: 3}
+  catchTrap: {fileID: 8300000, guid: 689d01299c25f8e4a83c090a1c74dbdb, type: 3}
+  miss: {fileID: 8300000, guid: 689d01299c25f8e4a83c090a1c74dbdb, type: 3}
   gameOver: {fileID: 0}
   buttonClick: {fileID: 0}
   menuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
-  musicVolume: 0.5
-  sfxVolume: 0.7
+  musicVolume: 1
+  sfxVolume: 0.27
 --- !u!4 &1120864628
 Transform:
   m_ObjectHideFlags: 0

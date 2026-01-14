@@ -2709,9 +2709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b19a363016daba409f544c0afa1bb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  sfxSource: {fileID: 0}
-  musicSource: {fileID: 0}
-  catchNormal: {fileID: 0}
+  sfxSource: {fileID: 1433117024}
+  musicSource: {fileID: 1433117024}
+  catchNormal: {fileID: 8300000, guid: a9bef8b6645284f4d8aa19ab4c9131b4, type: 3}
   catchBonus: {fileID: 0}
   catchTrap: {fileID: 0}
   miss: {fileID: 0}
