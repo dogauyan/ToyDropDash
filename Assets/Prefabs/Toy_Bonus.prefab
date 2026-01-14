@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toy
   scoreValue: 5
+  isBonus: 1
   causesMissOnCatch: 0
   causesMissOnExit: 1
 --- !u!96 &8726228224524825275

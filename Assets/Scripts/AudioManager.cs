@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [Header("Audio Sources")]
-    public AudioSource sfxSource;
     public AudioSource musicSource;
+    public AudioSource sfxSource;
 
     [Header("Sound Effects")]
     public AudioClip catchNormal;
@@ -30,12 +30,12 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+
             musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
             sfxVolume = PlayerPrefs.GetFloat("SFXVolume", sfxVolume);
 
             ApplyVolumes();
-
-            DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -56,6 +56,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
+    public void PlayButtonClick()
+    {
+        PlaySFX(buttonClick);
+    }
+
     // ---------- MUSIC ----------
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -67,19 +72,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        if (musicSource == null) return;
+        if (musicSource == null || clip == null) return;
 
         if (musicSource.clip == clip)
             return;
 
         musicSource.Stop();
         musicSource.clip = clip;
-
-        if (clip != null)
-        {
-            musicSource.loop = true;
-            musicSource.Play();
-        }
+        musicSource.loop = true;
+        musicSource.Play();
     }
 
     public void StopMusic()
@@ -88,17 +89,23 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
         musicSource.clip = null;
     }
+
+    // ---------- VOLUME ----------
     public void SetMusicVolume(float value)
     {
         musicVolume = value;
-        ApplyVolumes();
+        if (musicSource != null)
+            musicSource.volume = musicVolume;
+
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
     }
 
     public void SetSFXVolume(float value)
     {
         sfxVolume = value;
-        ApplyVolumes();
+        if (sfxSource != null)
+            sfxSource.volume = sfxVolume;
+
         PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
     }
 
