@@ -2833,11 +2833,11 @@ MonoBehaviour:
   TickSpeedMultiplier: 0.9
   ToyPrefabs:
   - prefab: {fileID: 5098497790150785071, guid: b8e02c9cf66dfcb458d490399c688b77, type: 3}
-    weight: 70
+    weight: 700
   - prefab: {fileID: 5098497790150785071, guid: 76367a1d7caee594785ac0bf397bcb9e, type: 3}
-    weight: 15
+    weight: 150
   - prefab: {fileID: 5098497790150785071, guid: e82dd9891884fed409350b623ee74ffc, type: 3}
-    weight: 15
+    weight: 150
 --- !u!4 &1185718588
 Transform:
   m_ObjectHideFlags: 0

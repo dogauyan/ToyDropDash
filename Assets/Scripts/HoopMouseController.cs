@@ -37,7 +37,7 @@ public class HoopMouseController : MonoBehaviour
         float camHeight = cam.orthographicSize;
         float camWidth = camHeight * cam.aspect;
 
-        // Clamp inside screen (accounting for hoop size)
+        // Clamp inside screen
         worldPos.x = Mathf.Clamp(
             worldPos.x,
             -camWidth + hoopRadius,

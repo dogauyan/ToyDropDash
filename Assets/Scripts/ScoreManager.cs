@@ -49,7 +49,6 @@ public class ScoreManager : MonoBehaviour
     }
 
     // NORMAL / BONUS catch
-    // 🔥 NOW RETURNS FINAL AWARDED SCORE
     public int AddScore(int basePoints)
     {
         combo++;

@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // ---------- SFX ----------
+    // SFX
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null || sfxSource == null) return;
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
         PlaySFX(buttonClick);
     }
 
-    // ---------- MUSIC ----------
+    // MUSIC
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainMenu")
@@ -90,7 +90,7 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = null;
     }
 
-    // ---------- VOLUME ----------
+    // VOLUME
     public void SetMusicVolume(float value)
     {
         musicVolume = value;

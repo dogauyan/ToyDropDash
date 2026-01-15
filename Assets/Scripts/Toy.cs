@@ -13,7 +13,7 @@ public class Toy : MonoBehaviour
     {
         if (causesMissOnCatch)
         {
-            // TRAP caught → counts as miss, breaks combo
+            // TRAP caught counts as miss, breaks combo, shakes camera
             ScoreManager.Instance.AddMiss();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.catchTrap);
             CameraShake.Instance.Shake(0.2f, 0.3f);
@@ -26,7 +26,6 @@ public class Toy : MonoBehaviour
             // NORMAL / BONUS caught
             int awarded = ScoreManager.Instance.AddScore(scoreValue);
 
-            // ✅ CORRECT AUDIO ROUTING
             if (isBonus)
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.catchBonus);
             else
