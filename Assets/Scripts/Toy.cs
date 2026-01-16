@@ -8,12 +8,12 @@ public class Toy : MonoBehaviour
     public bool isBonus = false;
     public bool causesMissOnCatch = false; // Trap = true
     public bool causesMissOnExit = true;   // Trap = false
+    public bool isRecovery = false;        // removes 1 miss
 
     public void OnCaught(out byte toytype)
     {
         if (causesMissOnCatch)
         {
-            // TRAP caught counts as miss, breaks combo, shakes camera
             ScoreManager.Instance.AddMiss();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.catchTrap);
             CameraShake.Instance.Shake(0.2f, 0.3f);
@@ -21,9 +21,20 @@ public class Toy : MonoBehaviour
             FloatingTextSpawner.Show("TRAP!", transform.position);
             toytype = 0;
         }
+        // RECOVERY toy 
+        else if (isRecovery)
+        {
+            ScoreManager.Instance.RemoveMiss(1);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.catchBonus);
+
+            FloatingTextSpawner.Show("MISS -1", transform.position, Color.green);
+            CameraShake.Instance.Shake(0.05f, 0.1f);
+
+            toytype = 3; // recovery type
+        }
+        //  NORMAL / BONUS toy
         else
         {
-            // NORMAL / BONUS caught
             int awarded = ScoreManager.Instance.AddScore(scoreValue);
 
             if (isBonus)

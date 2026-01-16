@@ -21,9 +21,7 @@ public class FloatingTextSpawner : MonoBehaviour
             position,
             Quaternion.identity
         );
-        //ft.transform.SetParent(Instance.floatingTextParent, true);
 
-        // Default styling
         Color color = Color.white;
 
         if (_color != null)

@@ -26,6 +26,8 @@ public class ToySpawner : MonoBehaviour
     public WeightedToy[] ToyPrefabs;
     public WeightedToy[] TrapPrefabs;
     public WeightedToy[] BonusPrefabs;
+    public WeightedToy[] RecoveryPrefabs;
+
 
     void Start()
     {
@@ -105,13 +107,24 @@ public class ToySpawner : MonoBehaviour
         }
 
         SpriteRenderer prefab;
-        float luck = Random.Range(0, 100);
+        float luck = Random.Range(0f, 100f);
         byte _t = 0;
 
-        if (luck < 15)
-            _t = 1;
-        else if (luck < 30)
-            _t = 2;
+        // 0 = normal, 1 = trap, 2 = bonus, 3 = recovery
+
+        if (ScoreManager.Instance.Misses > 0 && luck < 3f)
+        {
+            _t = 3; // recovery
+        }
+        else if (luck < 15f)
+        {
+            _t = 1; // trap
+        }
+        else if (luck < 30f)
+        {
+            _t = 2; // bonus
+        }
+
 
         switch (_t)
         {
@@ -125,6 +138,10 @@ public class ToySpawner : MonoBehaviour
 
             case 2:
                 prefab = GetRandomToyPrefab(BonusPrefabs);
+                break;
+
+            case 3:
+                prefab = GetRandomToyPrefab(RecoveryPrefabs);
                 break;
         }
 
@@ -163,6 +180,7 @@ public class ToySpawner : MonoBehaviour
                 return toy.prefab;
         }
 
-        return list[0].prefab; // fallback
+
+        return list[0].prefab;
     }
 }

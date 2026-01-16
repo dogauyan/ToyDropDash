@@ -80,6 +80,10 @@ public class ScoreManager : MonoBehaviour
         combo = 0;
         UpdateUI();
     }
+    public int Misses
+    {
+        get { return misses; }
+    }
 
     public void ApplyTrapPenalty(int penalty)
     {
@@ -159,5 +163,10 @@ public class ScoreManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void RemoveMiss(int amount = 1)
+    {
+        misses = Mathf.Max(0, misses - amount);
+        UpdateUI();
     }
 }

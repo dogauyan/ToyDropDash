@@ -2296,6 +2296,9 @@ MonoBehaviour:
   BonusPrefabs:
   - prefab: {fileID: 5098497790150785071, guid: 76367a1d7caee594785ac0bf397bcb9e, type: 3}
     weight: 150
+  RecoveryPrefabs:
+  - prefab: {fileID: 5098497790150785071, guid: dc6ddde62e9cb0f4dab125c99dd16402, type: 3}
+    weight: 0
 --- !u!4 &1185718588
 Transform:
   m_ObjectHideFlags: 0
