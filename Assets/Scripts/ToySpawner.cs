@@ -58,7 +58,7 @@ public class ToySpawner : MonoBehaviour
         float xmin = EdgeLeft.position.x;
         float ymin = EdgeLeft.position.y - (EdgeUp.position.y - EdgeLeft.position.y);
 
-        GameArea = new(
+        GameArea = new Rect(
             new Vector2(xmin, ymin),
             new Vector2(
                 EdgeRight.position.x - EdgeLeft.position.x,
@@ -66,7 +66,10 @@ public class ToySpawner : MonoBehaviour
             )
         );
 
-        CollidableArea.size = new(Screen.width / 80f, Screen.height / 80f);
+        CollidableArea.size = new Vector2(
+            Screen.width / 80f,
+            Screen.height / 80f
+        );
     }
 
     void Spawn()
@@ -104,29 +107,30 @@ public class ToySpawner : MonoBehaviour
         SpriteRenderer prefab;
         float luck = Random.Range(0, 100);
         byte _t = 0;
+
         if (luck < 15)
-        {
             _t = 1;
-        }
         else if (luck < 30)
-        {
             _t = 2;
-        }
+
         switch (_t)
         {
-            default :
+            default:
                 prefab = GetRandomToyPrefab(ToyPrefabs);
-            break;
-            case 1 : 
-                prefab = GetRandomToyPrefab(TrapPrefabs);
-            break;
-            case 2 :
-                prefab = GetRandomToyPrefab(BonusPrefabs);
-            break;
-        }
-        var Spawned = Instantiate(prefab, SpawnPosition, Quaternion.identity);
+                break;
 
+            case 1:
+                prefab = GetRandomToyPrefab(TrapPrefabs);
+                break;
+
+            case 2:
+                prefab = GetRandomToyPrefab(BonusPrefabs);
+                break;
+        }
+
+        var Spawned = Instantiate(prefab, SpawnPosition, Quaternion.identity);
         var rig = Spawned.GetComponent<Rigidbody2D>();
+
         float xx = (TargetPosition - SpawnPosition).x;
 
         rig.AddForce(
@@ -137,7 +141,10 @@ public class ToySpawner : MonoBehaviour
             ForceMode2D.Impulse
         );
 
-        rig.AddForce((GameArea.height / 4f) * Vector2.up, ForceMode2D.Impulse);
+        rig.AddForce(
+            (GameArea.height / 4f) * Vector2.up,
+            ForceMode2D.Impulse
+        );
     }
 
     SpriteRenderer GetRandomToyPrefab(WeightedToy[] list)
