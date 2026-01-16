@@ -712,7 +712,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 4.81
 --- !u!212 &120089111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3105,10 +3105,18 @@ MonoBehaviour:
   TickSpeedMultiplier: 0.9
   ToyPrefabs:
   - prefab: {fileID: 5098497790150785071, guid: b8e02c9cf66dfcb458d490399c688b77, type: 3}
-    weight: 700
-  - prefab: {fileID: 5098497790150785071, guid: 76367a1d7caee594785ac0bf397bcb9e, type: 3}
     weight: 150
+  - prefab: {fileID: 5098497790150785071, guid: 1a152d89feddbaa428de276cce265ed3, type: 3}
+    weight: 150
+  - prefab: {fileID: 5098497790150785071, guid: 754ac9a79a5e747488cb514c1104d7ab, type: 3}
+    weight: 150
+  - prefab: {fileID: 5098497790150785071, guid: a7e196a984032f741b8840d89b93c43c, type: 3}
+    weight: 150
+  TrapPrefabs:
   - prefab: {fileID: 5098497790150785071, guid: e82dd9891884fed409350b623ee74ffc, type: 3}
+    weight: 150
+  BonusPrefabs:
+  - prefab: {fileID: 5098497790150785071, guid: 76367a1d7caee594785ac0bf397bcb9e, type: 3}
     weight: 150
 --- !u!4 &1185718588
 Transform:
@@ -3567,7 +3575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 128, y: 0}
+  m_AnchoredPosition: {x: 127.99994, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1417881327
@@ -5983,7 +5991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -128, y: 0}
+  m_AnchoredPosition: {x: -127.99994, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2142265121

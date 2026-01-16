@@ -24,6 +24,8 @@ public class ToySpawner : MonoBehaviour
     int MultiplierCount = 0;
 
     public WeightedToy[] ToyPrefabs;
+    public WeightedToy[] TrapPrefabs;
+    public WeightedToy[] BonusPrefabs;
 
     void Start()
     {
@@ -99,7 +101,29 @@ public class ToySpawner : MonoBehaviour
                 break;
         }
 
-        var prefab = GetRandomToyPrefab();
+        SpriteRenderer prefab;
+        float luck = Random.Range(0, 100);
+        byte _t = 0;
+        if (luck < 15)
+        {
+            _t = 1;
+        }
+        else if (luck < 30)
+        {
+            _t = 2;
+        }
+        switch (_t)
+        {
+            default :
+                prefab = GetRandomToyPrefab(ToyPrefabs);
+            break;
+            case 1 : 
+                prefab = GetRandomToyPrefab(TrapPrefabs);
+            break;
+            case 2 :
+                prefab = GetRandomToyPrefab(BonusPrefabs);
+            break;
+        }
         var Spawned = Instantiate(prefab, SpawnPosition, Quaternion.identity);
 
         var rig = Spawned.GetComponent<Rigidbody2D>();
@@ -116,22 +140,22 @@ public class ToySpawner : MonoBehaviour
         rig.AddForce((GameArea.height / 4f) * Vector2.up, ForceMode2D.Impulse);
     }
 
-    SpriteRenderer GetRandomToyPrefab()
+    SpriteRenderer GetRandomToyPrefab(WeightedToy[] list)
     {
         float totalWeight = 0f;
-        foreach (var toy in ToyPrefabs)
+        foreach (var toy in list)
             totalWeight += toy.weight;
 
         float randomValue = Random.Range(0f, totalWeight);
         float cumulative = 0f;
 
-        foreach (var toy in ToyPrefabs)
+        foreach (var toy in list)
         {
             cumulative += toy.weight;
             if (randomValue <= cumulative)
                 return toy.prefab;
         }
 
-        return ToyPrefabs[0].prefab; // fallback
+        return list[0].prefab; // fallback
     }
 }
