@@ -18,6 +18,7 @@ public class ToySpawner : MonoBehaviour
 
     public float InitialSpawnTick = 3;
     public float TickSpeedMultiplier = 0.8f;
+    public float Blankness = 50;
 
     float MultiplierTick;
     float SpawnTick;
@@ -148,7 +149,7 @@ public class ToySpawner : MonoBehaviour
         }
 
         var Spawned = Instantiate(prefab, SpawnPosition, Quaternion.identity);
-        if (Random.Range(0f,100f) <= 50)
+        if (Random.Range(0f,100f) <= Blankness)
         {
             Spawned.causesMissOnCatch = false;
             Spawned.causesMissOnExit = false;

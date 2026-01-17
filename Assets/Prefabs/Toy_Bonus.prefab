@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.2, y: 11.2, z: 11.2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8739711039673294882}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2652023708000876916}
   - component: {fileID: 1187421958471990948}
   - component: {fileID: 8726228224524825275}
-  - component: {fileID: 7453203836372933678}
+  - component: {fileID: 6641136722810504880}
   m_Layer: 0
   m_Name: Toy_Bonus
   m_TagString: Toy
@@ -121,7 +121,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7996479687308138979}
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5211903897504600185, guid: 405cdc40033f24e469cecb1ed21d3c7e, type: 3}
+  m_Sprite: {fileID: 9141924819326278641, guid: debf4a42e47068a47a8fd0d2bc224e6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -228,6 +228,8 @@ MonoBehaviour:
   blankBubble: {fileID: 5116711900509342508}
   rig: {fileID: 2652023708000876916}
   spawned: 1
+  atDown: 0
+  atHoop: 0
   isBonus: 1
   causesMissOnCatch: 0
   causesMissOnExit: 1
@@ -351,8 +353,8 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!58 &7453203836372933678
-CircleCollider2D:
+--- !u!70 &6641136722810504880
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -386,4 +388,5 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4.52
+  m_Size: {x: 1.42, y: 1.9}
+  m_Direction: 0

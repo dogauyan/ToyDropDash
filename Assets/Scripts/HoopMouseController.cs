@@ -12,8 +12,8 @@ public class HoopMouseController : MonoBehaviour
         cam = Camera.main;
 
         // Hide system cursor
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.None;
 
         // Get hoop size from collider
         // CircleCollider2D col = GetComponent<CircleCollider2D>();

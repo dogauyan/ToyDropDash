@@ -6,6 +6,8 @@ public class Toy : MonoBehaviour
     public SpriteRenderer blankBubble;
     public Rigidbody2D rig;
     public bool spawned = true;
+    public bool atDown = false;
+    public bool atHoop = false;
 
     [Header("Toy Behavior")]
     public bool isBonus = false;
@@ -18,6 +20,9 @@ public class Toy : MonoBehaviour
     void Start()
     {
         Invoke(nameof(Touchable), 1);
+
+        atDown = false;
+        atHoop = false;
     }
     private void Touchable()
     {

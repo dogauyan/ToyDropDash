@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.9, y: 8.9, z: 8.9}
+  m_LocalScale: {x: 1.58, y: 1.58, z: 1.58}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8739711039673294882}
@@ -121,7 +121,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7965102656127186561}
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8857349398852097075, guid: 54969a0467685f54bad1e491e69e149b, type: 3}
+  m_Sprite: {fileID: -8857349398852097075, guid: ec06ed148ff2dec4c81b93ed51b54dfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -228,6 +228,8 @@ MonoBehaviour:
   blankBubble: {fileID: 347754483617717645}
   rig: {fileID: 2652023708000876916}
   spawned: 1
+  atDown: 0
+  atHoop: 0
   isBonus: 0
   causesMissOnCatch: 0
   causesMissOnExit: 0
@@ -386,4 +388,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 3.6
+  m_Radius: 0.58
