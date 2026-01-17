@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class WeightedToy
 {
-    public SpriteRenderer prefab;
+    public Toy prefab;
     public float weight = 1f;
 }
 
@@ -28,6 +28,8 @@ public class ToySpawner : MonoBehaviour
     public WeightedToy[] BonusPrefabs;
     public WeightedToy[] RecoveryPrefabs;
 
+
+    public Gradient blankGradient;
 
     void Start()
     {
@@ -106,7 +108,7 @@ public class ToySpawner : MonoBehaviour
                 break;
         }
 
-        SpriteRenderer prefab;
+        Toy prefab;
         float luck = Random.Range(0f, 100f);
         byte _t = 0;
 
@@ -146,6 +148,18 @@ public class ToySpawner : MonoBehaviour
         }
 
         var Spawned = Instantiate(prefab, SpawnPosition, Quaternion.identity);
+        if (Random.Range(0f,100f) <= 50)
+        {
+            Spawned.causesMissOnCatch = false;
+            Spawned.causesMissOnExit = false;
+            Spawned.isRecovery = false;
+            Spawned.scoreValue = 1;
+
+            Spawned.blankBubble.gameObject.SetActive(true);
+            Spawned.GetComponent<SpriteRenderer>().color = new Color(1,1,1, .5f);
+            Spawned.GetComponent<TrailRenderer>().colorGradient = blankGradient;
+        };
+
         var rig = Spawned.GetComponent<Rigidbody2D>();
 
         float xx = (TargetPosition - SpawnPosition).x;
@@ -164,7 +178,7 @@ public class ToySpawner : MonoBehaviour
         );
     }
 
-    SpriteRenderer GetRandomToyPrefab(WeightedToy[] list)
+    Toy GetRandomToyPrefab(WeightedToy[] list)
     {
         float totalWeight = 0f;
         foreach (var toy in list)

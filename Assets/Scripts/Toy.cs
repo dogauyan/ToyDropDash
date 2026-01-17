@@ -3,6 +3,9 @@
 public class Toy : MonoBehaviour
 {
     public int scoreValue = 1;
+    public SpriteRenderer blankBubble;
+    public Rigidbody2D rig;
+    public bool spawned = true;
 
     [Header("Toy Behavior")]
     public bool isBonus = false;
@@ -10,6 +13,16 @@ public class Toy : MonoBehaviour
     public bool causesMissOnExit = true;   // Trap = false
     public bool isRecovery = false;        // removes 1 miss
 
+
+
+    void Start()
+    {
+        Invoke(nameof(Touchable), 1);
+    }
+    private void Touchable()
+    {
+        gameObject.layer = 8;
+    }
     public void OnCaught(out byte toytype)
     {
         if (causesMissOnCatch)
@@ -45,7 +58,11 @@ public class Toy : MonoBehaviour
             FloatingTextSpawner.Show("+" + awarded, transform.position);
             CameraShake.Instance.Shake(0.1f, 0.15f);
 
-            toytype = (byte)(isBonus ? 2 : 1);
+            if (scoreValue == 1)
+            {
+                toytype = 4;
+            }
+            else toytype = (byte)(isBonus ? 2 : 1);
         }
 
         Destroy(gameObject);

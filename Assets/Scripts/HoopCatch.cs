@@ -15,7 +15,6 @@ public class HoopCatch : MonoBehaviour
 
         switch (toytype)
         {
-            
             case 0:
             Instantiate(CatchEffect_Bad, transform.position, Quaternion.identity);
             break;
@@ -26,6 +25,14 @@ public class HoopCatch : MonoBehaviour
 
             case 2:
             Instantiate(CatchEffect_Good, transform.position, Quaternion.identity);
+            break;
+
+            case 3:
+                //Recovery fx
+            break;
+
+            case 4:
+                //Blank fx
             break;
         }
     }

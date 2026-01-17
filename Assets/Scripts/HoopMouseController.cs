@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class HoopMouseController : MonoBehaviour
 {
     Camera cam;
+    public Rigidbody2D rig;
     float hoopRadius;
 
     void Start()
@@ -15,8 +16,8 @@ public class HoopMouseController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         // Get hoop size from collider
-        CircleCollider2D col = GetComponent<CircleCollider2D>();
-        hoopRadius = col.bounds.extents.x;
+        // CircleCollider2D col = GetComponent<CircleCollider2D>();
+        // hoopRadius = col.bounds.extents.x;
     }
 
     void Update()
@@ -50,7 +51,7 @@ public class HoopMouseController : MonoBehaviour
             camHeight - hoopRadius
         );
 
-        transform.position = worldPos;
+        rig.MovePosition(worldPos);
     }
 
     void OnDisable()

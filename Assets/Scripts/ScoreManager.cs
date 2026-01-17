@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
     // NORMAL / BONUS catch
     public int AddScore(int basePoints)
     {
-        combo++;
+        if (basePoints > 1) combo++;
         bestCombo = Mathf.Max(bestCombo, combo);
 
         int finalPoints = basePoints * Mathf.Max(1, combo);
